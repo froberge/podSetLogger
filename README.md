@@ -7,3 +7,5 @@ Go service that read the content of a Configuration file and display it on the w
 
 * This application was build to run inside docker.  It can be build and push to your favorite docker registry.
 
+## Authors
+[Felix Roberge](https://github.com/froberge-cloudOps) 
