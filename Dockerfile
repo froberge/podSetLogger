@@ -1,6 +1,10 @@
-FROM golang:alpine 
+FROM golang:alpine
+
+ARG confFilePah
 
 ADD ./src /go/src/podSetLogger
+
+ADD ./config $confFilePah
 WORKDIR /go/src/podSetLogger
 
 COPY go.mod .
