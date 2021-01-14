@@ -10,11 +10,10 @@ import (
 	"github.com/spf13/viper"
 )
 
-//const configFile = "/etc/config/configmap-podsetlogger.yaml"
 const configFileName = "podset-logger-config.yaml"
 const configFilePath = "/etc/config/"
 
-// Rad the config File
+// Read the config File
 func readConfigFile() {
 	// SetConfigFile explicitly defines the path, name and extension of the config file.
 	// Viper will use this and not check any of the config paths.
@@ -28,9 +27,6 @@ func readConfigFile() {
 
 	// Monitor the change to the config file
 	viper.WatchConfig()
-	//	viper.OnConfigChange(func(e fsnotify.Event) {
-	//		log.Printf("Config file changed:", e.Name)
-	//	})
 
 	// Find and read the config file
 	err := viper.ReadInConfig()
@@ -61,7 +57,8 @@ type HttpHandler struct{}
 func (h HttpHandler) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	readConfigFile()
 
-	fmt.Fprintln(w, "This is the PodSet Logger application that read a config file & deplay the informations.")
+	fmt.Fprintln(w, "PodSet Logger V1")
+	fmt.Fprintln(w, "This is the PodSet Logger application that read a config file & deplay the informations found according to what we are looking for.")
 	fmt.Fprintln(w, "")
 	fmt.Fprintln(w, "Value read from the config file:")
 
@@ -75,8 +72,6 @@ func (h HttpHandler) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 func main() {
 
 	log.Printf("Initializing the application")
-	// Add this line to create the image that fail's at startup
-	//	log.Fatalf("BAD VERSION POD CRASH SHOULD ROLE BACK")
 
 	var PORT string
 	if PORT = os.Getenv("PORT"); PORT == "" {
