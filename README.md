@@ -3,7 +3,7 @@
 Go service that read the content of a Configuration file and display it on the web
 You can fine a sample config file in the config/ folder.
 
-## build
+## Build
 The application was created to run in a docker image.  To build it use the build.sh script with the define paramets
 
 Name  | Required |  Description 
@@ -23,3 +23,4 @@ To build a docker images that will be deploy in a kubernetes cluster using a Con
  
 ## Authors
 [Felix Roberge](https://github.com/froberge-cloudOps)
+"

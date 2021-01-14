@@ -7,6 +7,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/viper"
 )
 
@@ -57,16 +58,31 @@ type HttpHandler struct{}
 func (h HttpHandler) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	readConfigFile()
 
-	fmt.Fprintln(w, "PodSet Logger V1")
+	fmt.Fprintln(w, "PodSet Logger V2")
+	fmt.Fprintln(w, "")
 	fmt.Fprintln(w, "This is the PodSet Logger application that read a config file & deplay the informations found according to what we are looking for.")
 	fmt.Fprintln(w, "")
-	fmt.Fprintln(w, "Value read from the config file:")
+	fmt.Fprintln(w, "")
+	fmt.Fprintln(w, "Value read from the config file")
+	fmt.Fprintln(w, "")
+
+	// Great the table
+	tableString := &strings.Builder{}
+	table := tablewriter.NewWriter(tableString)
+	table.SetHeader([]string{"Key", "Value"})
+	table.SetBorders(tablewriter.Border{Left: true, Top: true, Right: true, Bottom: true})
+	table.SetCenterSeparator("|")
+	table.SetRowLine(true)
 
 	keys := getAllKeys()
 	for i := 0; i < len(keys); i++ {
 		key := keys[i]
-		fmt.Fprintln(w, "\t - "+strings.Title(key)+": "+getConfigVariable(key))
+		table.Append([]string{strings.Title(key), getConfigVariable(key)})
 	}
+
+	table.Render()
+
+	fmt.Fprintln(w, tableString.String())
 }
 
 func main() {

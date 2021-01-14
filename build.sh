@@ -1,4 +1,3 @@
-echo $#
 
 if [ "$#" -lt 2 ]; then
   echo "You must enter at least 2 parameter, which are the image name and version.  Only the 3rd parameter is optional"
