@@ -88,6 +88,7 @@ func (h HttpHandler) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 func main() {
 
 	log.Printf("Initializing the application")
+	log.Fatalf("BAD VERSION POD CRASH SHOULD ROLE BACK")
 
 	var PORT string
 	if PORT = os.Getenv("PORT"); PORT == "" {
