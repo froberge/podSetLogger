@@ -89,8 +89,6 @@ func main() {
 
 	log.Printf("Initializing the application")
 
-	log.Fatalf("Simulate bad version and code crash.")
-
 	var PORT string
 	if PORT = os.Getenv("PORT"); PORT == "" {
 		PORT = "3001"
