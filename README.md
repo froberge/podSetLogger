@@ -23,4 +23,3 @@ To build a docker images that will be deploy in a kubernetes cluster using a Con
  
 ## Authors
 [Felix Roberge](https://github.com/roberge.felix@gmail.com)
-"
