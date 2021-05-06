@@ -22,5 +22,5 @@ To build a docker images that will be deploy in a kubernetes cluster using a Con
  * _ex: ./build.sh podset-logger latest_
  
 ## Authors
-[Felix Roberge](https://github.com/froberge-cloudOps)
+[Felix Roberge](https://github.com/roberge.felix@gmail.com)
 "
